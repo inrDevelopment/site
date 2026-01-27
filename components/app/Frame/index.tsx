@@ -1,22 +1,32 @@
+import CustomMenu from "@/components/CustomMenu";
 import { ReactNode } from "react";
+import CustomFooter from "../Footer/CustomFooter";
 import { Security } from "../Security";
 
-interface frame {
+interface Frame {
   children?: ReactNode;
 }
 
-export default function Frame({ children }: frame) {
+export default function Frame({ children }: Frame) {
   return (
-    <div className="flex h-dvh w-full flex-col bg-gray-200">
-      <div className="container mx-auto flex w-full items-center justify-between p-4">
-        <div className="flex w-full items-center">
-          <img src="/logos/logo_inr.svg" alt="" />
+    <div className="flex h-dvh w-full flex-col">
+      <div className="flex w-full items-center justify-between px-5 py-4">
+        <div className="flex items-center">
+          <img src="/logos/logo_inr.svg" alt="Logo INR" />
         </div>
-        <div className="w-full">
-          <Security />
+        <Security />
+      </div>
+
+      <div className="w-full bg-blue-500">
+        <div className="mx-auto max-w-7xl px-4">
+          <CustomMenu />
         </div>
       </div>
-      {children}
+
+      <div className="w-full flex-1">
+        <div className="max-w-8xl mx-auto px-1">{children}</div>
+      </div>
+      <CustomFooter />
     </div>
   );
 }
