@@ -10,7 +10,7 @@ export default function ItemListServices() {
         alt="Consultoria INR"
       />
       <MenuItem
-        href="/consulting"
+        href="/inrCourses"
         itemName="INR Cursos"
         src="/icons/cursos.svg"
         alt="INR Cursos"

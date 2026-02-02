@@ -1,6 +1,7 @@
 import CustomMenu from "@/components/CustomMenu";
 import { ReactNode } from "react";
 import CustomFooter from "../Footer/CustomFooter";
+import FooterMenu from "../Footer/FooterMenu";
 import { Security } from "../Security";
 
 interface Frame {
@@ -12,7 +13,9 @@ export default function Frame({ children }: Frame) {
     <div className="flex h-dvh w-full flex-col">
       <div className="flex w-full items-center justify-between px-5 py-4">
         <div className="flex items-center">
-          <img src="/logos/logo_inr.svg" alt="Logo INR" />
+          <a href="/">
+            <img src="/logos/logo_inr.svg" alt="Logo INR" />
+          </a>
         </div>
         <Security />
       </div>
@@ -27,6 +30,7 @@ export default function Frame({ children }: Frame) {
         <div className="max-w-8xl mx-auto px-1">{children}</div>
       </div>
       <CustomFooter />
+      <FooterMenu />
     </div>
   );
 }

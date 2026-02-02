@@ -32,7 +32,7 @@ export default function Consulting() {
           <a
             className="text-blue-500 hover:underline"
             target="_blank"
-            href="https://inrpublicacoes.com.br/site/formulario-consultoria"
+            href="/consulting/form"
           >
             acesse aqui o ambiente específico
           </a>{" "}

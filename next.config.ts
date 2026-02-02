@@ -66,10 +66,30 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "inrpublicacoes.com.br",
+        pathname: "/site/img/base_dados/banner.jpg",
+      },
+      {
+        protocol: "https",
+        hostname: "inrpublicacoes.com.br",
         pathname: "/site/img/consultoria/banner.jpg",
       },
+      {
+        protocol: "https",
+        hostname: "consultoria.publicacoesinr.com.br",
+        pathname: "/roberto-guimaraes-logo.svg",
+      },
+      {
+        protocol: "https",
+        hostname: "consultoria.publicacoesinr.com.br",
+        pathname: "/roberto-guimares.webp",
+      },
+      {
+        protocol: "https",
+        hostname: "consultoria.publicacoesinr.com.br",
+        pathname: "/elinton-wiermann.jpg",
+      },
     ],
-    domains: ["inrpublicacoes.com.br"],
+    domains: ["inrpublicacoes.com.br", "consultoria.publicacoesinr.com.br"],
   },
   turbopack: {},
 };

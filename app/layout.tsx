@@ -1,9 +1,9 @@
-import { ReactNode } from "react"
-import "./globals.css"
-import Frame from "@/components/app/Frame"
+import Frame from "@/components/app/Frame";
+import { ReactNode } from "react";
+import "./globals.css";
 
 export default function Layout({
-  children
+  children,
 }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="pt-br">
@@ -11,5 +11,5 @@ export default function Layout({
         <Frame>{children}</Frame>
       </body>
     </html>
-  )
+  );
 }

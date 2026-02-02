@@ -1,6 +1,6 @@
 export default function CustomFooter() {
   return (
-    <div className="mt-10 mb-10 w-full bg-blue-900 py-5">
+    <div className="mt-10 w-full bg-blue-900 py-5">
       <div className="flex items-start justify-between !px-70 !py-5">
         {/* Logo */}
         <div>
