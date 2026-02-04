@@ -1,10 +1,10 @@
 export default function CustomFooter() {
   return (
-    <div className="mt-10 w-full bg-blue-900 py-5">
+    <div className="mt-10 w-full py-5" style={{ backgroundColor: "#1A1A4E" }}>
       <div className="flex items-start justify-between !px-70 !py-5">
         {/* Logo */}
         <div>
-          <img src="/logos/logo_inr.svg" alt="Logo INR" />
+          <img src="/logos/logo_inr_branco.svg" alt="Logo INR" />
         </div>
 
         {/* Central do Assinante */}

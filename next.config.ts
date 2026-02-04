@@ -75,6 +75,22 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "inrpublicacoes.com.br",
+        pathname: "/sistema/img_up/_20160928141035foto_1.jpg",
+      },
+      {
+        protocol: "https",
+        hostname: "inrpublicacoes.com.br",
+        pathname: "/sistema/img_up/_20160928141225foto_2.jpg",
+      },
+      {
+        protocol: "https",
+        hostname: "inrpublicacoes.com.br",
+        pathname:
+          "/sistema/img_up/_20240526140632whatsapp_image_2024_05_26_at_13.56.27.jpeg",
+      },
+      {
+        protocol: "https",
         hostname: "consultoria.publicacoesinr.com.br",
         pathname: "/roberto-guimaraes-logo.svg",
       },
