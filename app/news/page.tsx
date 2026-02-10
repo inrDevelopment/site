@@ -8,14 +8,15 @@ import { useEffect, useState } from "react";
 
 export default function NewsPage() {
   const [noticias, setNoticias] = useState<ItemProps[]>([]);
-  const [offset, setOffset] = useState(10);
+  const [offset, setOffset] = useState(0);
   const limit = 10;
 
   useEffect(() => {
     async function initialFetch() {
-      const res = await fetch(`/api/bulletin?table=news&limit=10&offset=0`);
+      const res = await fetch(`/api/bulletin/news?limit=10&offset=0`);
 
       const data = await res.json();
+      console.info(data);
 
       setNoticias(data);
     }
@@ -25,7 +26,7 @@ export default function NewsPage() {
 
   async function loadMoreNews() {
     const res = await fetch(
-      `/api/bulletin?table=news&limit=${limit}&offset=${offset}`,
+      `/api/bulletin/news&limit=${limit}&offset=${offset}`,
     );
     if (!res.ok) {
       return;

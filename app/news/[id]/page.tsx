@@ -13,7 +13,7 @@ export default function NewsById() {
     const initialFetch = async () => {
       const id = Number(params.id);
 
-      const newsResponse = await fetch(`/api/bulletin/${id}?table=news`);
+      const newsResponse = await fetch(`/api/bulletin/news?id=${id}`);
       if (!newsResponse.ok) return;
       const data: ItemProps = await newsResponse.json();
       setNews(data);

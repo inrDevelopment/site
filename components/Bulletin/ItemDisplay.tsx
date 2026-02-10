@@ -14,6 +14,7 @@ export default function ItemDisplay({ item }: ItemDisplayProps) {
 
   const titleClass = "mb-4 text-4xl font-semibold ";
   const subtitleClass = "mb-6 text-2xl font-semibold ";
+  console.info(item);
 
   return (
     <div className="mx-auto mt-5 max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -33,10 +34,8 @@ export default function ItemDisplay({ item }: ItemDisplayProps) {
 
       <div
         className="mx-auto max-w-full"
-        // dangerouslySetInnerHTML={{ __html: decodedText }}
-      >
-        {decodedText}
-      </div>
+        dangerouslySetInnerHTML={{ __html: decodedText }}
+      ></div>
       <div className="mt-5">
         <a
           target="_blank"

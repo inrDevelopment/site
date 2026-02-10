@@ -1,56 +1,38 @@
 "use client";
 
 import CustomPagination from "@/components/Classificators/Pagination";
-import PageList from "@/components/ItemsList/PageList";
+import PRIntroduction from "@/components/Classificators/PRIntroduction";
+import { colors } from "@/lib/colors";
 import { ItemProps } from "@/lib/types/bulletin";
+import { DBClassifierItem } from "@/lib/types/classifiers";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function ClassPRPage() {
-  const [classPR, setClassPR] = useState<ItemProps[]>([]);
-  const [offset, setOffset] = useState(10);
-  const limit = 10;
-
-  const pageComment = (
-    <div className="text-start">
-      <p>
-        Após minuciosa garimpagem no DJe - Diário da Justiça eletrônico do
-        Estado do Paraná, os atos de interesse das atividades notariais e de
-        registro são levados ao Classificador correspondente e enviados aos
-        Notários e Registradores diariamente.
-      </p>
-      <p>
-        Fazem parte dos Classificadores encaminhados cotidianamente ao Assinante
-        das Publicações INR os atos emanados dos seguintes órgãos:
-      </p>
-      <ul className="ml-5 list-disc space-y-2 pl-5 marker:text-lg">
-        <li>Presidência do Tribunal de Justiça do Estado do Paraná;</li>
-        <li>Corregedoria da Justiça Paranaense;</li>
-        <li>Divisão de Concursos da Corregedoria da Justiça Paranaense;</li>
-        <li>Conselho da Magistratura da Justiça Paranaense;</li>
-        <li>
-          Além de decisões, na íntegra, da segunda instância da Justiça
-          Paranaense.
-        </li>
-      </ul>
-      <p>
-        Ressalta-se que os atos contidos nas edições diárias são inseridos na
-        Base de Dados INR no mesmo dia de sua divulgação oficial.
-      </p>
-      <p>
-        A Base de Dados INR dispõe de moderna ferramenta de busca, permitindo ao
-        usuário pesquisas sempre muito rápidas e certeiras.
-      </p>
-    </div>
-  );
+  const [classPR, setClassPR] = useState<DBClassifierItem[]>([]);
+  const [offset, setOffset] = useState(0);
+  const limit = 12;
 
   useEffect(() => {
     async function initialFetch() {
-      const res = await fetch(`/api/bulletin?table=classPR&limit=10&offset=0`);
+      try {
+        const res = await fetch(`/api/classifiers?state=3&limit=12&offset=0`, {
+          cache: "no-store",
+        });
 
-      const data = await res.json();
+        if (!res.ok) {
+          throw new Error("Erro ao buscar classificadores");
+        }
 
-      setClassPR(data);
+        const data = await res.json();
+
+        console.info(data);
+
+        setClassPR(data);
+      } catch (error) {
+        console.warn(error instanceof Error ? error.message : error);
+      }
     }
 
     initialFetch();
@@ -66,17 +48,17 @@ export default function ClassPRPage() {
 
     const data: ItemProps[] = await res.json();
 
-    setClassPR((prev) => {
-      const seen = new Set(prev.map((item) => item.id));
-      const merged = [...prev, ...data.filter((item) => !seen.has(item.id))];
-      return merged;
-    });
+    // setClassPR((prev) => {
+    //   const seen = new Set(prev.map((item) => item.id));
+    //   const merged = [...prev, ...data.filter((item) => !seen.has(item.id))];
+    //   return merged;
+    // });
 
     setOffset((prev) => prev + data.length);
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full px-10">
       <div className="relative h-64 w-full md:h-86">
         <Image
           src="https://inrpublicacoes.com.br/site/img/classificadores/banner_pr.jpg"
@@ -91,8 +73,31 @@ export default function ClassPRPage() {
           </h1>
         </div>
       </div>
+      <div>
+        <PRIntroduction />
+      </div>
 
-      <PageList content={classPR} title="Índice" pageComment={pageComment} />
+      <h1
+        className="my-10 text-4xl font-semibold"
+        style={{ color: colors.primary.title }}
+      >
+        Índice
+      </h1>
+
+      <ul>
+        {classPR.map((item) => (
+          <li className="my-5 hover:underline">
+            <Link
+              href={`/classPRIndex?date=${encodeURIComponent(item.data_iso)}`}
+              key={item.id}
+              className="text-lg font-semibold"
+              style={{ color: colors.primary.title }}
+            >
+              [+] {item.datacad}
+            </Link>
+          </li>
+        ))}
+      </ul>
       <CustomPagination />
     </div>
   );

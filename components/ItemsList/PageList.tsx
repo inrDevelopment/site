@@ -18,7 +18,7 @@ export default function PageList({
           <li key={item.id}>
             <Link
               href={`/news/${item.id}`}
-              className="cursor-pointer py-1 font-semibold text-blue-600 hover:text-blue-500 hover:underline"
+              className="cursor-pointer py-1 font-semibold text-blue-500 hover:text-blue-500 hover:underline"
             >
               {`${item.date} - ${stripHtml(item.title)}`}
             </Link>
